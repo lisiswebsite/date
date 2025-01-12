@@ -1,3 +1,65 @@
+@font-face {
+    font-family: 'Futura ExtraBold';
+    src: url('http://prattbaseball.com/date/fonts/Futura-ExtraBold.otf') format('otf');
+    font-weight: bold;
+    font-style: normal;
+}
+
 body {
     background-color: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    font-family: 'Futura', sans-serif;
+}
+
+h1 {
+    font-family: 'Futura ExtraBold', sans-serif;
+}
+
+h3 {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: auto;
+    max-width: 50%;
+    text-align: left;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    flex: 1;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    visibility: hidden; /* Hide options initially */
+    opacity: 0; /* Start with opacity 0 */
+    transition: opacity 1s ease-in-out; /* Fade-in effect */
+}
+
+.options.visible {
+    visibility: visible;
+    opacity: 1; /* Fade to opacity 1 */
 }
