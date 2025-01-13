@@ -108,7 +108,15 @@ a:hover {
     opacity: 1;
 }
 
-#player1slide {
+#playerstill {
+    position: absolute;
+    bottom: 0;
+    right: 0%;
+    width: auto;
+    height: 80%;
+}
+
+#playerslide {
     position: absolute;
     bottom: 0;
     right: -100%; /* Start off-screen to the right */
@@ -117,8 +125,27 @@ a:hover {
     transition: right 1s ease-in-out; /* Slide in animation */
 }
 
-#player1slide.visible {
+#playerslide.visible {
     right: 0; /* Final position inside the frame */
+}
+
+#hover-image {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 80%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#hover-image.visible {
+    opacity: 1;
+}
+
+#hover-image.hidden {
+    opacity: 0;
 }
 
 @media screen and (max-width: 800px) {
