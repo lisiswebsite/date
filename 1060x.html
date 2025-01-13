@@ -7,14 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/bg.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: -1;
+        }
+    </style>
 </head>
 <body>
-    <div class="frame" style="background: url('images/bg.jpg') no-repeat center center; background-size: cover;">
-    <p>SUDDENLY A BOLT OF LIGHTNING STRIKES DOWN FROM THE SKY, KILLING YOU INSTANTLY.
-        GAME OVER
-    </p>
+    <div class="frame" id="frame">
+        <div class="background-image fade-out" id="background-image"></div>
+        <h3 id="intro-text">SUDDENLY A BOLT OF LIGHTNING STRIKES DOWN FROM THE SKY, KILLING YOU INSTANTLY.
+        </h3>
+        <img id="ratstill" src="images/rat.png" alt="rat statue">
+    </div>
+    <div class="options">
+        <p>GAME OVER</p>
+        <a href="https://prattbaseball.com/date">try again</a>
     </div>
     <!-- insert link that lets you go back to home screen or last decision -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const frameElement = document.getElementById("frame");
+            const bodyElement = document.body;
+
+            // Trigger the fade to black effect
+            setTimeout(() => {
+                bodyElement.classList.add("fade-to-black");
+                frameElement.classList.add("fade-border");
+            }, 0);
+
+            // Trigger the flash effect after the fade to black
+            setTimeout(() => {
+                bodyElement.classList.remove("fade-to-black");
+                bodyElement.classList.add("flash-effect");
+            }, 1000);
+
+            // Remove the flash effect, set the frame background to black, and restore the border
+            setTimeout(() => {
+                bodyElement.classList.remove("flash-effect");
+                frameElement.classList.add("black-background");
+                frameElement.classList.remove("fade-border");
+            }, 1300);
+
+            // Fade the body background back to pink
+            setTimeout(() => {
+                bodyElement.style.backgroundColor = "pink";
+            }, 1300);
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

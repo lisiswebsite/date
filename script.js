@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const optionsElement = document.querySelector(".options");
     const playerslideElement = document.getElementById("playerslide");
     const playerslideFirstElement = document.getElementById("playerslidefirst");
+    const ratslideElement = document.getElementById("ratslide");
     const hoverImageElement = document.getElementById("hover-image");
     const elevatorGuyButton = document.getElementById("elevator-guy");
     const pencilGuyButton = document.getElementById("pencil-guy");
@@ -24,6 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
             if (playerslideElement) {
                 playerslideElement.classList.add("visible"); // Slide in the image
             }
+            if (ratslideElement) {
+                ratslideElement.classList.add("visible"); // Slide in the image
+            }
         }
     }
 
@@ -36,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     } else {
         typeWriter(); // Start typing immediately if there's no playerslideFirstElement
+    }
+
+    if (ratslideElement) {
+        ratslideElement.classList.add("visible"); // Slide in the image immediately
     }
 
     if (elevatorGuyButton && hoverImageElement) {

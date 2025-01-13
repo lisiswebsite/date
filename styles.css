@@ -56,6 +56,7 @@ h2 {
     border: 10px solid hotpink; /* Add this line for the border */
     overflow: hidden; /* Ensure the image doesn't overflow the frame */
     background-size: cover;
+    transition: background 1s, border 1s; /* Add transition for fading effect */
 }
 
 .frame.shake {
@@ -74,6 +75,32 @@ h2 {
     80% { transform: translate(0px, -1px) rotate(1deg); }
     90% { transform: translate(0px, 2px) rotate(0deg); }
     100% { transform: translate(0px, -2px) rotate(-1deg); }
+}
+
+@keyframes fadeToBlack {
+    0% { background-color: pink; }
+    100% { background-color: black; }
+}
+
+@keyframes flashWhite {
+    0%, 100% { background-color: black; }
+    50% { background-color: white; }
+}
+
+.fade-to-black {
+    animation: fadeToBlack 1s forwards;
+}
+
+.flash-effect {
+    animation: flashWhite 0.3s ease-in-out 1;
+}
+
+.frame.black-background {
+    background-color: black !important;
+}
+
+.frame.fade-border {
+    border: none !important;
 }
 
 h3 {
@@ -166,6 +193,27 @@ a:hover {
     right: 0; /* Final position inside the frame */
 }
 
+#ratstill {
+    position: absolute;
+    bottom: 0;
+    left: 0%; /* Start off-screen to the left */
+    width: auto;
+    height: 80%;
+}
+
+#ratslide {
+    position: absolute;
+    bottom: 0;
+    left: -100%; /* Start off-screen to the left */
+    width: auto;
+    height: 80%;
+    transition: left 1s ease-in-out; /* Slide in animation */
+}
+
+#ratslide.visible {
+    left: 0; /* Final position inside the frame */
+}
+
 #hover-image {
     position: absolute;
     bottom: 0;
@@ -208,6 +256,20 @@ a:hover {
     }
 
     #playerslide.visible {
+        left: 0;
+    }
+
+    #ratstill {
+        height: 60%;
+        left: 0%;
+    }
+
+    #ratslide {
+        left: -150%; /* Start off-screen to the left */
+        height: 60%;
+    }
+
+    #ratslide.visible {
         left: 0;
     }
 }
