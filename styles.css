@@ -152,4 +152,25 @@ a:hover {
     h3 {
         width: 100%;
     }
+
+    .options {
+        flex-direction: column;
+        position: absolute;
+        margin-bottom: -10rem;
+        max-width: 100%;
+    }
+
+    #playerstill {
+        height: 60%;
+        left: 0%;
+    }
+
+    #playerslide {
+        right: -150%; /* Start off-screen to the right */
+        height: 60%;
+    }
+
+    #playerslide.visible {
+        left: 0;
+    }
 }
