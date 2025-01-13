@@ -306,6 +306,16 @@ a:hover {
         left: 0;
     }
 
+    #playerslidefirst {
+        right: -150%; /* Start off-screen to the right */
+        height: 60%;
+    }
+    
+    #playerslidefirst.visible {
+        left: 0;
+    }
+    
+
     #ratstill {
         height: 60%;
         left: 0%;
