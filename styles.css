@@ -5,61 +5,124 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Meera Inimai Regular';
+    src: url('https://prattbaseball.com/date/fonts/MeeraInimai-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: pink;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
     position: relative;
-    font-family: 'Futura', sans-serif;
+    font-family: 'Meera Inimai Regular', sans-serif;
+}
+
+.index-page {
+    text-align: center; /* Center text horizontally */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
 }
 
 h1 {
     font-family: 'Futura ExtraBold', sans-serif;
+    margin-bottom: 20px; /* Add some space between h1 and h2 */
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 78%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 30px;
+    border: 10px solid hotpink; /* Add this line for the border */
+    overflow: hidden; /* Ensure the image doesn't overflow the frame */
 }
 
 h3 {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: auto;
-    max-width: 50%;
+    margin: 0;
+    width: 45%; /* Limit width to 40% of the frame */
+    background-color: white; /* White background */
+    padding: 10px; /* Add some padding */
+    box-sizing: border-box;
     text-align: left;
 }
 
 a {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px 20px;
     margin: 10px;
-    background-color: #f0f0f0;
+    background: linear-gradient(to bottom, #ffffff, #e6f7ff); /* White to light blue gradient */
     color: #333;
     text-decoration: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-    flex: 1;
+    border-radius: 30px;
+    /* border: 4px dotted hotpink; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     text-align: center;
 }
 
 a:hover {
-    background-color: #e0e0e0;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(to bottom, #e6f7ff, #cceeff); /* Light blue gradient on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transform: translateY(1px); /* Move down slightly on hover */
 }
 
 .options {
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 800px;
-    visibility: hidden; /* Hide options initially */
-    opacity: 0; /* Start with opacity 0 */
-    transition: opacity 1s ease-in-out; /* Fade-in effect */
+    max-width: 70%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    bottom: 7%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
 
 .options.visible {
     visibility: visible;
-    opacity: 1; /* Fade to opacity 1 */
+    opacity: 1;
+}
+
+#player1 {
+    position: absolute;
+    bottom: 0;
+    right: -100%; /* Start off-screen to the right */
+    width: auto;
+    height: 80%;
+    transition: right 1s ease-in-out; /* Slide in animation */
+}
+
+#player1.visible {
+    right: 0; /* Final position inside the frame */
+}
+
+@media screen and (max-width: 800px) {
+    h3 {
+        width: 100%;
+    }
 }
