@@ -108,7 +108,7 @@ a:hover {
     opacity: 1;
 }
 
-#player1 {
+#player1slide {
     position: absolute;
     bottom: 0;
     right: -100%; /* Start off-screen to the right */
@@ -117,7 +117,7 @@ a:hover {
     transition: right 1s ease-in-out; /* Slide in animation */
 }
 
-#player1.visible {
+#player1slide.visible {
     right: 0; /* Final position inside the frame */
 }
 

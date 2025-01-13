@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const textElement = document.getElementById("intro-text");
     const optionsElement = document.querySelector(".options");
-    const player1Element = document.getElementById("player1");
+    const player1slideElement = document.getElementById("player1slide");
     const text = textElement.innerHTML;
     textElement.innerHTML = "";
     let index = 0;
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(typeWriter, 17); // Adjust typing speed here
         } else {
             optionsElement.classList.add("visible"); // Show options with fade-in effect
-            player1Element.classList.add("visible"); // Slide in the image
+            player1slideElement.classList.add("visible"); // Slide in the image
         }
     }
 
