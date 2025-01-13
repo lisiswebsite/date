@@ -43,7 +43,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (ratslideElement) {
-        ratslideElement.classList.add("visible"); // Slide in the image immediately
+        // Reset the position of the ratslide element
+        ratslideElement.classList.remove("visible");
+        setTimeout(() => {
+            ratslideElement.classList.add("visible"); // Slide in the image
+        }, 50); // Small delay to ensure the animation is visible
     }
 
     if (elevatorGuyButton && hoverImageElement) {
