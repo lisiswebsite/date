@@ -119,7 +119,8 @@ h3.visible {
 }
 
 h4 {
-    margin: 25%;
+    margin-left: 25%;
+    margin-top: 10%;
     width: 40%;
     background-color: lightyellow;
     padding: 1.2rem;
@@ -202,6 +203,15 @@ a:hover {
     z-index: 2;
 }
 
+#playerstillleft {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: auto;
+    height: 80%;
+    z-index: 2;
+}
+
 #playerslide {
     position: absolute;
     bottom: 0;
@@ -231,7 +241,7 @@ a:hover {
 #ratstill {
     position: absolute;
     bottom: 0;
-    left: 0%; /* Start off-screen to the left */
+    left: 0%;
     width: auto;
     height: 80%;
 }
@@ -297,6 +307,11 @@ a:hover {
     #playerstill {
         height: 60%;
         left: 0%;
+    }
+
+    #playerstillleft {
+        height: 60%;
+        right: 0%;
     }
 
     #playerslide {
