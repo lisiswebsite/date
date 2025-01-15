@@ -388,7 +388,7 @@ a:hover {
 
     #playerstill {
         height: 60%;
-        left: 0%;
+        right: -5%;
     }
 
     #playerstillleft {
@@ -399,10 +399,11 @@ a:hover {
     #playerslide {
         right: -150%; /* Start off-screen to the right */
         height: 60%;
+        transition: right 1s ease-in-out;
     }
 
     #playerslide.visible {
-        left: 0;
+        right: -5%;
     }
 
     #playerslidefirst {
@@ -411,13 +412,13 @@ a:hover {
     }
     
     #playerslidefirst.visible {
-        left: 0;
+        right: -5%;
     }
     
 
     #ratstill {
         height: 60%;
-        left: 0%;
+        right: -5%;
     }
 
     #ratslide {
@@ -425,9 +426,9 @@ a:hover {
         height: 60%;
     }
 
-    #ratslide.visible {
-        left: 0;
-    }
+    /* #ratslide.visible {
+        right: -5%;
+    } */
 
     #playerdownslide {
         left: 50%;
