@@ -37,6 +37,18 @@ body {
     align-items: center; /* Center content horizontally */
 }
 
+.start-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-icon {
+    width: 30px; /* Adjust the size as needed */
+    height: 30px; /* Adjust the size as needed */
+    margin: 0 10px; /* Adjust the spacing as needed */
+}
+
 h1 {
     font-family: 'Futura ExtraBold', sans-serif;
     margin-bottom: 20px; /* Add some space between h1 and h2 */
@@ -344,6 +356,10 @@ a:hover {
 }
 
 @media screen and (max-width: 800px) {
+    .title {
+        width: 80%;
+    }
+    
     h3 {
         width: 100%;
     }
