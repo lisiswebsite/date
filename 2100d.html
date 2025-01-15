@@ -37,9 +37,24 @@
             position: absolute;
             top: 0;
             right: 0;
-            height: 100% !important;
             width: auto;
             transform: rotate(180deg); /* Upside down */
+            z-index: 2;
+        }
+
+        @media screen and (min-width: 801px) {
+        #playerstill {
+            height: 100% !important;
+        }
+        }
+
+        @media screen and (max-width: 800px) {
+        #playerstill {
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg); /* Center horizontally and rotate upside down */
+            transform-origin: center; /* Ensure the rotation is around the center */
+            height: 90% !important;
+        }
         }
     </style>
 </head>
