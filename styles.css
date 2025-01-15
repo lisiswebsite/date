@@ -299,6 +299,18 @@ a:hover {
     top: 0%; /* Final position inside the frame */
 }
 
+.heart {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 300%;
+    height: 300%;
+    background: url('images/heart.png') no-repeat center center;
+    background-size: contain;
+    z-index: 3;
+}
+
 .valentines {
     position: absolute;
     bottom: 0;
@@ -312,6 +324,7 @@ a:hover {
     transition: opacity 1s ease-in-out;
     z-index: 4;
     font-family: 'Style Script Regular', sans-serif;
+    font-size: 3rem;
 }
 
 .valentines.visible {
@@ -386,5 +399,16 @@ a:hover {
 
     #ratslide.visible {
         left: 0;
+    }
+
+    .heart {
+        top: -125%;
+        left: -125%;
+        width: 350%;
+        height: 350%;
+    }
+
+    .valentines {
+        font-size: 2rem;
     }
 }
