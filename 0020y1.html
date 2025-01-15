@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" id="frame" style="background: url('images/elevator-inside.jpg') no-repeat center center; background-size: cover;">
         <h4 id="intro-text">If we're going to be stuck here for a while we might as well introduce
             ourselves. I'm Beau Alvarez, a catcher for the Pratt Baseball team. Hey! Our first game

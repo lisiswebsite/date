@@ -47,6 +47,14 @@
     </style>
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" id="frame">
         <div class="background-image" id="background-image"></div>
         <h3 id="intro-text">You make it fifty feet before security tackles you. As you are being handcuffed, however, you see Jurrangelo Kryszczuk sprinting in your direction!

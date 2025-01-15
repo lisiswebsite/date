@@ -35,6 +35,14 @@
     </style>
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" id="frame">
         <div class="background-image" id="background-image"></div>
         <div class="bars" id="bars"></div>

@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" style="background: url('images/ratbg.jpg') no-repeat center center; background-size: cover;">
     <h4 id="intro-text">Hey, it's you again! This is one of my favorite spots on campus. Hope I see you around more often!</h4>
     <img id="ratstill" src="images/rat.png" alt="rat statue">

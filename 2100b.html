@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" style="background: url('images/sky.jpg') no-repeat center center; background-size: cover;">
         <h4 id="intro-text">You really know how to get a guy's attention! Would you wanna go out sometime?</h4>
         <img id="playerdownslide" class="upsidedown" src="images/Player2.png" alt="Player 2">

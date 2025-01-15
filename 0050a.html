@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" style="background: url('images/printers.jpg') no-repeat center center; background-size: cover;">
     <h4 id="intro-text">Thank you so much! By the way, I'm Mavis Shen, an outfielder for the Pratt Baseball team!
         If you haven't heard already, our first game is February 14th, I'd love to see you there!

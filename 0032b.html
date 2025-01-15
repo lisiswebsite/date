@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" style="background: url('images/classroom.jpg') no-repeat center center; background-size: cover;">
         <h4 id="intro-text">Hi! Would you happen to have a pencil I could borrow?</h4>
         <img id="playerslidefirst" src="images/Player2.png" alt="Player 2">

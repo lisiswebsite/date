@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" id="frame" style="background: url('images/elevator-inside.jpg') no-repeat center center; background-size: cover;">
         <h3 id="intro-text">You push the emergency button without him noticing and the elevator stops suddenly.</h3>
         <img id="playerstill" src="images/Player1.png" alt="Player 1">

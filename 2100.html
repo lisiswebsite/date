@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" style="background: url('images/field.jpg') no-repeat center center; background-size: cover;">
     <h3 id="intro-text">On February 14th, you attend the first game of the Pratt Baseball season. Jurrangelo Kryszczuk is pitching. How will you get his attention?
     </h3>
