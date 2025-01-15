@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="header"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header').innerHTML = data;
+            });
+    </script>
     <div class="frame" style="background: url('images/elevators.jpg') no-repeat center center; background-size: cover;">
         <h3 id="intro-text">It's the first day of the spring semester and you just walked into Steuben Hall.
             Your class is on the fourth floor and there's one person waiting for the elevator.
