@@ -421,7 +421,7 @@ a:hover {
     }
 
     #ratslide {
-        left: -150%; /* Start off-screen to the left */
+        left: -150%;
         height: 60%;
     }
 
@@ -430,7 +430,10 @@ a:hover {
     }
 
     #playerdownslide {
-        left: 0%;
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg); /* Center horizontally and rotate upside down */
+        transform-origin: center; /* Ensure the rotation is around the center */
+        height: 90%;
     }
 
     .heart {
