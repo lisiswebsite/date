@@ -12,6 +12,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Style Script Regular';
+    src: url('https://prattbaseball.com/date/fonts/StyleScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color: pink;
     display: flex;
@@ -276,6 +283,40 @@ a:hover {
 
 #hover-image.hidden {
     opacity: 0;
+}
+
+#playerdownslide {
+    position: absolute;
+    top: -100%; /* Start off-screen above the frame */
+    right: 0%;
+    transform: rotate(180deg); /* Center horizontally and rotate upside down */
+    width: auto;
+    height: 100%;
+    transition: top 1s ease-in-out; /* Slide down animation */
+}
+
+#playerdownslide.visible {
+    top: 0%; /* Final position inside the frame */
+}
+
+.valentines {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 4;
+    font-family: 'Style Script Regular', sans-serif;
+}
+
+.valentines.visible {
+    visibility: visible;
+    opacity: 1;
 }
 
 @media screen and (max-width: 800px) {

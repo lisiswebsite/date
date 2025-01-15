@@ -1,0 +1,131 @@
+<!-- YOU WIN -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratt Baseball Dating Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes scaleUp {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .scale-up {
+            animation: scaleUp 2s forwards;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/sky.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .frame {
+            overflow: hidden;
+        }
+
+        .playerstill {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100% !important;
+            width: auto;
+            transform: rotate(180deg); /* Upside down */
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 300%;
+            height: 300%;
+            background: url('images/heart.png') no-repeat center center;
+            background-size: contain;
+            z-index: 3;
+        }
+
+        .gameover {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: 4; /* Ensure it is layered above the heart */
+            text-align: center; /* Center the text */
+        }
+
+        .gameover.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .options {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .options.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Override styles for 1100c.html to center the gameover text */
+        .frame .gameover {
+            right: auto;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="frame" id="frame">
+        <div class="background-image" id="background-image"></div>
+        <img class="playerstill" id="playerstill" src="images/Player1.png" alt="Player 1">
+        <div class="heart" id="heart"></div>
+        <div class="gameover" id="gameover">
+            <h1>YOU WIN</h1>
+        </div>
+        <div class="valentines" id="valentines">
+            <h2>Happy Valentine's Day</h2>
+        </div>
+    </div>
+    <div class="options" id="options">
+        <a href="https://prattbaseball.com/date">play again</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const heartElement = document.getElementById("heart");
+            const gameoverElement = document.getElementById("gameover");
+            const valentinesElement = document.getElementById("valentines");
+            const optionsElement = document.getElementById("options");
+
+            // Start the heart animation
+            heartElement.classList.add("scale-up");
+
+            // Show gameover text and valentines text 2 seconds after the page loads
+            setTimeout(() => {
+                gameoverElement.classList.add("visible"); // Show gameover with fade-in effect
+                valentinesElement.classList.add("visible"); // Show valentines with fade-in effect
+                setTimeout(() => {
+                    optionsElement.classList.add("visible"); // Show options with fade-in effect
+                }, 1000); // Delay to ensure gameover appears first
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

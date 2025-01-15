@@ -7,13 +7,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes zoomInChoppy {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(5deg); }
+            50% { transform: scale(1.4) rotate(-5deg); }
+            75% { transform: scale(1.6) rotate(5deg); }
+            100% { transform: scale(1.8) rotate(0deg); }
+        }
+
+        @keyframes zoomInSmooth {
+            0% { transform: scale(1.8); transform-origin: center; }
+            100% { transform: scale(5); transform-origin: bottom; }
+        }
+
+        .zoom-in-choppy {
+            animation: zoomInChoppy 1.5s steps(3, end) forwards;
+        }
+
+        .zoom-in-smooth {
+            animation: zoomInSmooth 1s forwards;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/field.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .frame {
+            background-color: black; /* Black background inside the frame */
+        }
+    </style>
 </head>
 <body>
-    <div class="frame" style="background: url('images/bg.jpg') no-repeat center center; background-size: cover;">
-    <p>YOU WIN</p>
-    <p>you def got their attention. as you are being tackled & handcuffs, PLAYER 1 asks you out!</p>
+    <div class="frame" id="frame">
+        <div class="background-image" id="background-image"></div>
+        <h3 id="intro-text">You make it fifty feet before security tackles you. As you are being handcuffed, however, you see Beau Alvarez sprinting in your direction!
+        </h3>
     </div>
-    <!-- play again -->
-    <script src="script.js"></script>
+    <div class="options" id="options">
+        <a href="1100b.html">next</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElement = document.getElementById("intro-text");
+            const optionsElement = document.querySelector(".options");
+            const backgroundImageElement = document.getElementById("background-image");
+            const playerslideElement = document.getElementById("playerslide");
+            const playerslideFirstElement = document.getElementById("playerslidefirst");
+            const ratslideElement = document.getElementById("ratslide");
+            const hoverImageElement = document.getElementById("hover-image");
+            const elevatorGuyButton = document.getElementById("elevator-guy");
+            const pencilGuyButton = document.getElementById("pencil-guy");
+            const napButton = document.getElementById("nap");
+            const text = textElement.innerHTML;
+            textElement.innerHTML = "";
+            let index = 0;
+
+            function typeWriter() {
+                if (index === 0) {
+                    textElement.classList.add("visible"); // Show the text background when typing starts
+                }
+                if (index < text.length) {
+                    textElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 16); // Adjust typing speed here
+                } else {
+                    optionsElement.classList.add("visible"); // Show options with fade-in effect
+                    if (playerslideElement) {
+                        playerslideElement.classList.add("visible"); // Slide in the image
+                    }
+                    if (ratslideElement) {
+                        ratslideElement.classList.add("visible"); // Slide in the image
+                    }
+                }
+            }
+
+            function startZoomAnimation() {
+                backgroundImageElement.classList.add("zoom-in-choppy");
+                backgroundImageElement.addEventListener("animationend", function() {
+                    backgroundImageElement.classList.remove("zoom-in-choppy");
+                    backgroundImageElement.classList.add("zoom-in-smooth");
+                    backgroundImageElement.addEventListener("animationend", function() {
+                        typeWriter(); // Start typing after the zoom animation is complete
+                    }, { once: true });
+                }, { once: true });
+            }
+
+            if (playerslideFirstElement) {
+                setTimeout(() => {
+                    playerslideFirstElement.classList.add("visible"); // Slide in the image immediately
+                }, 100); // Small delay to ensure the animation is visible
+                playerslideFirstElement.addEventListener('transitionend', function() {
+                    startZoomAnimation(); // Start zoom animation after the image is in its final position
+                });
+            } else {
+                startZoomAnimation(); // Start zoom animation immediately if there's no playerslideFirstElement
+            }
+        });
+    </script>
 </body>
 </html>
