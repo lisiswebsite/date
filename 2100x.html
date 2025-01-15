@@ -1,4 +1,4 @@
-<!-- GAME OVER FOR STREAKING -->
+<!-- PLAYER 2 run on field naked -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +7,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes zoomInChoppy {
+            0% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.2) rotate(5deg); }
+            50% { transform: scale(1.4) rotate(-5deg); }
+            75% { transform: scale(1.6) rotate(5deg); }
+            100% { transform: scale(1.8) rotate(0deg); }
+        }
+
+        @keyframes zoomInSmooth {
+            0% { transform: scale(1.8); transform-origin: center; }
+            100% { transform: scale(5); transform-origin: bottom; }
+        }
+
+        @keyframes fadeToBlack {
+            0% { opacity: 1; transform: scale(5); transform-origin: bottom; }
+            100% { opacity: 0; transform: scale(5); transform-origin: bottom; }
+        }
+
+        .zoom-in-choppy {
+            animation: zoomInChoppy 1.5s steps(3, end) forwards;
+        }
+
+        .zoom-in-smooth {
+            animation: zoomInSmooth 1s forwards;
+        }
+
+        .fade-to-black {
+            animation: fadeToBlack 2s forwards;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/field.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .frame {
+            background-color: black; /* Black background inside the frame */
+        }
+    </style>
 </head>
 <body>
-    <div class="frame" style="background: url('images/field.jpg') no-repeat center center; background-size: cover;">
-    <p>GAME OVER</p>
-    <p>what were you thinking? you go to jail & your crush visits you and tells you he could never be with someone who would commit such a heinous crime</p>
+    <div class="frame" id="frame">
+        <div class="background-image" id="background-image"></div>
+        <h3 id="intro-text">You make it fifty feet before security tackles you.</h3>
     </div>
-    <!-- try again -->
-    <script src="script.js"></script>
+    <div class="options" id="options">
+        <a href="2100x2.html">next</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElement = document.getElementById("intro-text");
+            const optionsElement = document.querySelector(".options");
+            const backgroundImageElement = document.getElementById("background-image");
+            const text = textElement.innerHTML;
+            textElement.innerHTML = "";
+            let index = 0;
+
+            function typeWriter() {
+                if (index === 0) {
+                    textElement.classList.add("visible"); // Show the text background when typing starts
+                }
+                if (index < text.length) {
+                    textElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 16); // Adjust typing speed here
+                } else {
+                    setTimeout(() => {
+                        backgroundImageElement.classList.add("fade-to-black");
+                        backgroundImageElement.addEventListener("animationend", function() {
+                            optionsElement.classList.add("visible"); // Show options with fade-in effect
+                        }, { once: true });
+                    }, 100);
+                }
+            }
+
+            function startZoomAnimation() {
+                backgroundImageElement.classList.add("zoom-in-choppy");
+                backgroundImageElement.addEventListener("animationend", function() {
+                    backgroundImageElement.classList.remove("zoom-in-choppy");
+                    backgroundImageElement.classList.add("zoom-in-smooth");
+                    backgroundImageElement.addEventListener("animationend", function() {
+                        typeWriter(); // Start typing after the smooth zoom animation is complete
+                    }, { once: true });
+                }, { once: true });
+            }
+
+            startZoomAnimation(); // Start zoom animation immediately
+        });
+    </script>
 </body>
 </html>

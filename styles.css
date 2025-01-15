@@ -61,7 +61,7 @@ h2 {
     box-sizing: border-box;
     border-radius: 30px;
     border: 10px solid hotpink; /* Add this line for the border */
-    overflow: hidden; /* Ensure the image doesn't overflow the frame */
+    overflow: hidden;
     background-size: cover;
     transition: background 1s, border 1s; /* Add transition for fading effect */
 }
@@ -297,6 +297,17 @@ a:hover {
 
 #playerdownslide.visible {
     top: 0%; /* Final position inside the frame */
+}
+
+.bars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/bars2.png') no-repeat center center;
+    background-size: cover; /* Ensure the height matches the frame and cover the area */
+    z-index: 3; /* Layer above background image and Player1.png */
 }
 
 .heart {

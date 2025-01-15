@@ -7,13 +7,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .fade-out {
+            animation: fadeOut 5s forwards;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/field.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .frame {
+            background-color: black; /* Black background inside the frame */
+        }
+    </style>
 </head>
 <body>
-    <div class="frame" style="background: url('images/field.jpg') no-repeat center center; background-size: cover;">
-    <p>GAME OVER</p>
-    <p>he couldn't hear you cheering and while you were in the stands a different student ran on the field and got his attention/won his heart. better luck next time!</p>
+    <div class="frame" id="frame">
+        <div class="background-image fade-out" id="background-image"></div>
+        <h3 id="intro-text">You clap and cheer enthusiastically from the stands.
+            Unfortunately, Jurrangelo doesn't notice you because another Pratt student runs onto the field.
+            Two weeks later, they're officially dating each other. Bummer!
+        </h3>
+        <div class="gameover" id="gameover">
+            <h1>GAME OVER</h1>
+        </div>
     </div>
-    <!-- try again -->
-    <script src="script.js"></script>
+    <div class="options" id="options">
+        <a href="2100.html">go back to last choice</a>
+        <a href="https://prattbaseball.com/date">start over</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const textElement = document.getElementById("intro-text");
+            const optionsElement = document.getElementById("options");
+            const gameoverElement = document.getElementById("gameover");
+
+            // Typewriter effect for the intro text
+            const text = textElement.innerHTML;
+            textElement.innerHTML = "";
+            let index = 0;
+
+            function typeWriter() {
+                if (index === 0) {
+                    textElement.classList.add("visible"); // Show the text background when typing starts
+                }
+                if (index < text.length) {
+                    textElement.innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 16); // Adjust typing speed here
+                } else {
+                    gameoverElement.classList.add("visible"); // Show gameover with fade-in effect
+                    setTimeout(() => {
+                        optionsElement.classList.add("visible"); // Show options with fade-in effect
+                    }, 1000); // Delay to ensure gameover appears first
+                }
+            }
+
+            typeWriter();
+        });
+    </script>
 </body>
 </html>
