@@ -345,7 +345,7 @@ a:hover {
 
     .gameover {
         position: absolute;
-        bottom: 0;
+        bottom: 5%;
         left: 0 auto;
         color: white;
         font-size: 1rem;
