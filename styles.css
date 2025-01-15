@@ -352,7 +352,7 @@ a:hover {
     }
 
     .options {
-        flex-direction: column;
+        /* flex-direction: column; */
         position: relative;
         bottom: -16rem;
         max-width: 100%;
