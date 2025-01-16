@@ -8,6 +8,8 @@
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="icon" href="images/icon.gif" type="favicon">
     <link rel="stylesheet" href="styles.css">
+    <script src="players.js" defer></script>
+    <script src="replacePlaceholders.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
@@ -19,14 +21,14 @@
             });
     </script>
     <div class="frame" style="background: url('images/printers.jpg') no-repeat center center; background-size: cover;">
-    <h4 id="intro-text">Thank you so much! By the way, I'm Mavis Shen, an outfielder for the Pratt Baseball team!
+    <h4 id="intro-text">Thank you so much! By the way, I'm [Player3-firstname] [Player3-lastname], [Player3-pos] for the Pratt Baseball team!
         If you haven't heard already, our first game is February 14th, I'd love to see you there!
     </h4>
-    <img id="playerstill" src="images/Player3.png" alt="Player 3">
+    <img id="playerstill" data-placeholder="Player3-image" alt="Player 3">
     </div>
     <div class="options">
         <a href="3060.html">ok</a>
     </div>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

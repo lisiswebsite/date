@@ -22,11 +22,6 @@
             100% { transform: scale(5); transform-origin: bottom; }
         }
 
-        @keyframes fadeToBlack {
-            0% { opacity: 1; transform: scale(5); transform-origin: bottom; }
-            100% { opacity: 0; transform: scale(5); transform-origin: bottom; }
-        }
-
         .zoom-in-choppy {
             animation: zoomInChoppy 1.5s steps(3, end) forwards;
         }
@@ -35,8 +30,15 @@
             animation: zoomInSmooth 1s forwards;
         }
 
+        @keyframes fadeToBlack {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
         .fade-to-black {
-            animation: fadeToBlack 2s forwards;
+            animation: fadeToBlack 3s forwards;
+            transform: scale(5); /* Maintain the final state of zoomInSmooth */
+            transform-origin: bottom; /* Maintain the final state of zoomInSmooth */
         }
 
         .background-image {
@@ -56,26 +58,26 @@
     </style>
 </head>
 <body>
-    <div id="header"></div>
-    <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-            });
-    </script>
     <div class="frame" id="frame">
         <div class="background-image" id="background-image"></div>
-        <h3 id="intro-text">You make it fifty feet before security tackles you.</h3>
+        <h3 id="intro-text">You make it fifty feet before getting tackled by security.
+        </h3>
     </div>
     <div class="options" id="options">
-        <a href="1100x2.html">ok</a>
+        <a href="1100x2.html">next</a>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const textElement = document.getElementById("intro-text");
             const optionsElement = document.querySelector(".options");
             const backgroundImageElement = document.getElementById("background-image");
+            const playerslideElement = document.getElementById("playerslide");
+            const playerslideFirstElement = document.getElementById("playerslidefirst");
+            const ratslideElement = document.getElementById("ratslide");
+            const hoverImageElement = document.getElementById("hover-image");
+            const elevatorGuyButton = document.getElementById("elevator-guy");
+            const pencilGuyButton = document.getElementById("pencil-guy");
+            const napButton = document.getElementById("nap");
             const text = textElement.innerHTML;
             textElement.innerHTML = "";
             let index = 0;
@@ -83,18 +85,20 @@
             function typeWriter() {
                 if (index === 0) {
                     textElement.classList.add("visible"); // Show the text background when typing starts
+                    backgroundImageElement.classList.add("fade-to-black"); // Start fade to black when typing starts
                 }
                 if (index < text.length) {
                     textElement.innerHTML += text.charAt(index);
                     index++;
                     setTimeout(typeWriter, 16); // Adjust typing speed here
                 } else {
-                    setTimeout(() => {
-                        backgroundImageElement.classList.add("fade-to-black");
-                        backgroundImageElement.addEventListener("animationend", function() {
-                            optionsElement.classList.add("visible"); // Show options with fade-in effect
-                        }, { once: true });
-                    }, 100);
+                    optionsElement.classList.add("visible"); // Show options with fade-in effect
+                    if (playerslideElement) {
+                        playerslideElement.classList.add("visible"); // Slide in the image
+                    }
+                    if (ratslideElement) {
+                        ratslideElement.classList.add("visible"); // Slide in the image
+                    }
                 }
             }
 
@@ -104,12 +108,21 @@
                     backgroundImageElement.classList.remove("zoom-in-choppy");
                     backgroundImageElement.classList.add("zoom-in-smooth");
                     backgroundImageElement.addEventListener("animationend", function() {
-                        typeWriter(); // Start typing after the smooth zoom animation is complete
+                        typeWriter(); // Start typing after the zoom animation is complete
                     }, { once: true });
                 }, { once: true });
             }
 
-            startZoomAnimation(); // Start zoom animation immediately
+            if (playerslideFirstElement) {
+                setTimeout(() => {
+                    playerslideFirstElement.classList.add("visible"); // Slide in the image immediately
+                }, 100); // Small delay to ensure the animation is visible
+                playerslideFirstElement.addEventListener('transitionend', function() {
+                    startZoomAnimation(); // Start zoom animation after the image is in its final position
+                });
+            } else {
+                startZoomAnimation(); // Start zoom animation immediately if there's no playerslideFirstElement
+            }
         });
     </script>
 </body>

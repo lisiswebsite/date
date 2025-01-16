@@ -8,6 +8,8 @@
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="icon" href="images/icon.gif" type="favicon">
     <link rel="stylesheet" href="styles.css">
+    <script src="players.js" defer></script>
+    <script src="replacePlaceholders.js" defer></script>
     <style>
         @keyframes fadeOut {
             0% { opacity: 1; }
@@ -32,6 +34,10 @@
         .frame {
             background-color: black; /* Black background inside the frame */
         }
+
+        .bars, .playerstill, .background-image {
+            transition: opacity 2s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -49,7 +55,7 @@
         <h4 id="intro-text">Hey. I appreciate you showing up to the game, but what you did yesterday was insane.
             I think it's for the best if we don't see each other anymore.
         </h4>
-        <img class="playerstill" id="playerstill" src="images/Player1.png" alt="Player 1">
+        <img class="playerstill" id="playerstill" data-placeholder="Player1-image" alt="Player 1">
         <div class="gameover" id="gameover">
             <h1>GAME OVER</h1>
         </div>
@@ -60,43 +66,11 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const textElement = document.getElementById("intro-text");
-            const optionsElement = document.getElementById("options");
-            const gameoverElement = document.getElementById("gameover");
-            const backgroundImageElement = document.getElementById("background-image");
-            const barsElement = document.getElementById("bars");
-            const playerstillElement = document.getElementById("playerstill");
-
-            // Typewriter effect for the intro text
-            const text = textElement.innerHTML;
-            textElement.innerHTML = "";
-            let index = 0;
-
-            function typeWriter() {
-                if (index === 0) {
-                    textElement.classList.add("visible"); // Show the text background when typing starts
-                }
-                if (index < text.length) {
-                    textElement.innerHTML += text.charAt(index);
-                    index++;
-                    setTimeout(typeWriter, 16); // Adjust typing speed here
-                } else {
-                    // Start fade-out animation for images
-                    backgroundImageElement.classList.add("fade-out");
-                    barsElement.classList.add("fade-out");
-                    playerstillElement.classList.add("fade-out");
-
-                    // Show gameover text after fade-out animation completes
-                    backgroundImageElement.addEventListener("animationend", function() {
-                        gameoverElement.classList.add("visible"); // Show gameover with fade-in effect
-                        setTimeout(() => {
-                            optionsElement.classList.add("visible"); // Show options with fade-in effect
-                        }, 1000); // Delay to ensure gameover appears first
-                    }, { once: true });
-                }
-            }
-
-            typeWriter();
+            setTimeout(() => {
+                document.getElementById("background-image").style.opacity = "0";
+                document.getElementById("bars").style.opacity = "0";
+                document.getElementById("playerstill").style.opacity = "0";
+            }, 1800);
         });
     </script>
 </body>

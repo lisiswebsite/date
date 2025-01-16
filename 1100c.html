@@ -8,6 +8,8 @@
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="icon" href="images/icon.gif" type="favicon">
     <link rel="stylesheet" href="styles.css">
+    <script src="players.js" defer></script>
+    <script src="replacePlaceholders.js" defer></script>
     <style>
         @keyframes scaleUp {
             0% { transform: scale(0); }
@@ -106,7 +108,7 @@
     </script>
     <div class="frame" id="frame">
         <div class="background-image" id="background-image"></div>
-        <img class="playerstill" id="playerstill" src="images/Player1.png" alt="Player 1">
+        <img class="playerstill" id="playerstill" data-placeholder="Player1-image" alt="Player 1">
         <div class="heart" id="heart"></div>
         <div class="gameover" id="gameover">
             <h1>YOU WIN</h1>

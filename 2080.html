@@ -8,6 +8,8 @@
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="icon" href="images/icon.gif" type="favicon">
     <link rel="stylesheet" href="styles.css">
+    <script src="players.js" defer></script>
+    <script src="replacePlaceholders.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
@@ -19,13 +21,13 @@
             });
     </script>
     <div class="frame" style="background: url('images/snow.jpg') no-repeat center center; background-size: cover;">
-    <h3 id="intro-text">While playing outside, you run into Jurrangelo Kryszczuk.
+    <h3 id="intro-text">While playing outside, you run into [Player2-firstname] [Player2-lastname].
     </h3>
-    <img id="playerslide" src="images/Player2.png" alt="Player 2">
+    <img id="playerslide" data-placeholder="Player2-image" alt="Player 2">
     </div>
     <div class="options">
         <a href="2080a.html">ok</a>
     </div>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

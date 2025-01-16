@@ -8,6 +8,8 @@
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="icon" href="images/icon.gif" type="favicon">
     <link rel="stylesheet" href="styles.css">
+    <script src="players.js" defer></script>
+    <script src="replacePlaceholders.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
@@ -21,11 +23,11 @@
     <div class="frame" style="background: url('images/wall.jpg') no-repeat center center; background-size: cover;">
         <div class="bars"></div>
         <h3 id="intro-text">The next morning, you get a visitor.</h3>
-        <img id="playerslide" src="images/Player1.png" alt="Player 1">
+        <img id="playerslide" data-placeholder="Player1-image" alt="Player 1">
     </div>
     <div class="options">
         <a href="1100x3.html">ok</a>
     </div>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>

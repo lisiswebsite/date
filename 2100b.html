@@ -8,6 +8,8 @@
     <title>Pratt Baseball Dating Simulator</title>
     <link rel="icon" href="images/icon.gif" type="favicon">
     <link rel="stylesheet" href="styles.css">
+    <script src="players.js" defer></script>
+    <script src="replacePlaceholders.js" defer></script>
 </head>
 <body>
     <div id="header"></div>
@@ -19,46 +21,13 @@
             });
     </script>
     <div class="frame" style="background: url('images/sky.jpg') no-repeat center center; background-size: cover;">
-        <h4 id="intro-text">You really know how to get a guy's attention! Would you wanna go out sometime?</h4>
-        <img id="playerdownslide" class="upsidedown" src="images/Player2.png" alt="Player 2">
+        <h4 id="intro-text"> You really know how to get a [Player2-pr4] attention! Would you wanna go out sometime?</h4>
+        <img id="playerdownslide" class="upsidedown" data-placeholder="Player2-image" alt="Player 2">
     </div>
     <div class="options">
         <a href="2100c.html">yes</a>
         <a href="2100d.html">no</a>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const textElement = document.getElementById("intro-text");
-            const optionsElement = document.querySelector(".options");
-            const playerdownslideElement = document.getElementById("playerdownslide");
-            const text = textElement.innerHTML;
-            textElement.innerHTML = "";
-            let index = 0;
 
-            function typeWriter() {
-                if (index === 0) {
-                    textElement.classList.add("visible"); // Show the text background when typing starts
-                }
-                if (index < text.length) {
-                    textElement.innerHTML += text.charAt(index);
-                    index++;
-                    setTimeout(typeWriter, 16); // Adjust typing speed here
-                } else {
-                    optionsElement.classList.add("visible"); // Show options with fade-in effect
-                }
-            }
-
-            if (playerdownslideElement) {
-                setTimeout(() => {
-                    playerdownslideElement.classList.add("visible"); // Slide in the image immediately
-                }, 100); // Small delay to ensure the animation is visible
-                playerdownslideElement.addEventListener('transitionend', function() {
-                    typeWriter(); // Start typing after the image is in its final position
-                });
-            } else {
-                typeWriter(); // Start typing immediately if there's no playerdownslideElement
-            }
-        });
-    </script>
 </body>
 </html>
