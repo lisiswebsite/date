@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const player1No = 49; // Specify the player number for Player1
-    const player2No = 1; // Specify the player number for Player2
-    const player3No = 32; // Specify the player number for Player3
+    const player1No = 1; // Specify the player number for Player1
+    const player2No = 38; // Specify the player number for Player2
+    const player3No = 57; // Specify the player number for Player3
 
     const player1 = players.find(player => player.no === player1No);
     const player2 = players.find(player => player.no === player2No);
